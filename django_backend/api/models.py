@@ -30,6 +30,7 @@ class Flashcard(models.Model):
         ('GRM', 'Grammar'),
         ('SEN', 'Sentence'),
     ]
+
     
     front_content = models.TextField()
     back_content = models.TextField()

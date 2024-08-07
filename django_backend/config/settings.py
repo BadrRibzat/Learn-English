@@ -1,18 +1,16 @@
 from pathlib import Path
 from decouple import config, Csv
-from pymongo import MongoClient
 from datetime import timedelta
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
-
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+
 
 # Application definition
 
@@ -63,15 +61,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # MongoDB configuration
-DATABASE_URL = config('DATABASE_URL')
-client = MongoClient(DATABASE_URL)
-DATABASE_NAME = DATABASE_URL.split('/')[-1]
-
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': DATABASE_NAME,
-        'CLIENT': client,
+        'NAME': config('DATABASE_URL').split('/')[-1],
+        'CLIENT': {
+            'host': config('DATABASE_URL'),
+        }
     }
 }
 
@@ -134,3 +130,29 @@ SIMPLE_JWT = {
 CORS_ALLOW_ALL_ORIGINS = True  # For development only. Configure properly for production.
 
 AUTH_USER_MODEL = 'api.User'
+
+# Disable Django's built-in migrations
+MIGRATION_MODULES = {
+    'auth': None,
+    'contenttypes': None,
+    'default': None,
+    'sessions': None,
+    'api': None,
+}
+
+# Monkey patch the django.db.migrations.recorder.MigrationRecorder.has_table method
+from django.db.migrations.recorder import MigrationRecorder
+MigrationRecorder.has_table = lambda self: False
+
+
+# drf-yasg settings
+SWAGGER_SETTINGS = {
+   'SECURITY_DEFINITIONS': {
+      'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+      }
+   }
+}
+
