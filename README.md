@@ -60,32 +60,75 @@ Updated `django_backend/config/settings.py`:
 - Created custom user model in `api/models.py`
 - Updated admin site to use custom user model
 
-## Current Project Structure
+## Current Project tree Structure for the django_backend:
 
-Learn-English/
-├── django_backend/
-│ ├── api/
-│ │ ├── management/
-│ │ │ └── commands/
-│ │ │ └── init_db.py
-│ │ ├── migrations/
-│ │ ├── admin.py
-│ │ ├── apps.py
-│ │ ├── models.py
-│ │ ├── serializers.py
-│ │ ├── tests.py
-│ │ ├── urls.py
-│ │ └── views.py
-│ ├── config/
-│ │ ├── asgi.py
-│ │ ├── settings.py
-│ │ ├── urls.py
-│ │ └── wsgi.py
-│ └── manage.py
-├── frontend/ # Currently under development
-├── env/
-├── README.md
-└── requirements.txt
+django_backend/
+├── api
+│   ├── admin.py
+│   ├── apps.py
+│   ├── chatbot.py
+│   ├── db.py
+│   ├── __init__.py
+│   ├── management
+│   │   └── commands
+│   │       ├── init_db.py
+│   │       └── __pycache__
+│   │           └── init_db.cpython-310.pyc
+│   ├── migrations
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── __pycache__
+│   │   ├── admin.cpython-310.pyc
+│   │   ├── apps.cpython-310.pyc
+│   │   ├── chatbot.cpython-310.pyc
+│   │   ├── db.cpython-310.pyc
+│   │   ├── __init__.cpython-310.pyc
+│   │   ├── models.cpython-310.pyc
+│   │   ├── serializers.cpython-310.pyc
+│   │   ├── urls.cpython-310.pyc
+│   │   └── views.cpython-310.pyc
+│   ├── serializers.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── config
+│   ├── asgi.py
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-310.pyc
+│   │   ├── settings.cpython-310.pyc
+│   │   ├── urls.cpython-310.pyc
+│   │   └── wsgi.cpython-310.pyc
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── locale
+│   ├── ar
+│   │   └── LC_MESSAGES
+│   │       ├── django.mo
+│   │       └── django.po
+│   ├── de
+│   │   └── LC_MESSAGES
+│   │       ├── django.mo
+│   │       └── django.po
+│   ├── es
+│   │   └── LC_MESSAGES
+│   │       ├── django.mo
+│   │       └── django.po
+│   ├── ja
+│   │   └── LC_MESSAGES
+│   │       ├── django.mo
+│   │       └── django.po
+│   ├── ko
+│   │   └── LC_MESSAGES
+│   │       ├── django.mo
+│   │       └── django.po
+│   └── zh
+│       └── LC_MESSAGES
+│           ├── django.mo
+│           └── django.po
+└── manage.py
+
 
 ## Next Steps
 
@@ -137,4 +180,4 @@ The following API endpoints are currently available:
 /api/user-achievements/: User achievement tracking
 For detailed information on each endpoint, including available methods and required parameters, please refer to the Swagger or ReDoc documentation.
 
-This README.md file will be updated during development process.
+This README.md file will be updated during development processi.
