@@ -59,8 +59,12 @@ class Lesson(models.Model):
     _id = models.ObjectIdField()
     level = models.ForeignKey(Level, on_delete=models.CASCADE, related_name='lessons')
     title = models.CharField(max_length=200)
-    description = models.TextField()
+    brief = models.TextField()  # Brief description visible to visitors
+    content = models.TextField()  # Detailed content for registered users
     order = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.level.name} - Lesson {self.order}: {self.title}"
 
 class Flashcard(models.Model):
     _id = models.ObjectIdField()
