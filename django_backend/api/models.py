@@ -1,111 +1,122 @@
 from djongo import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.utils.translation import gettext_lazy as _
 
 class User(AbstractUser):
     _id = models.ObjectIdField()
-    LANGUAGE_CHOICES = [
-        ('KO', 'Korean'),
-        ('ZH', 'Chinese'),
-        ('JA', 'Japanese'),
-        ('ES', 'Spanish'),
-        ('AR', 'Arabic'),
-        ('DE', 'German'),
-    ]
-    LEVEL_CHOICES = [
-        ('BEG', 'Beginner'),
-        ('INT', 'Intermediate'),
-        ('ADV', 'Advanced'),
-    ]
-    
-    native_language = models.CharField(max_length=2, choices=LANGUAGE_CHOICES)
-    current_level = models.CharField(max_length=3, choices=LEVEL_CHOICES, default='BEG')
-    
+    native_language = models.CharField(max_length=2, choices=[
+        ('KO', _('Korean')),
+        ('ZH', _('Chinese')),
+        ('JA', _('Japanese')),
+        ('FR', _('French')),
+        ('ES', _('Spanish')),
+        ('AR', _('Arabic')),
+        ('DE', _('German'))
+    ])
+    current_level = models.CharField(max_length=3, choices=[
+        ('BEG', _('Beginner')),
+        ('INT', _('Intermediate')),
+        ('ADV', _('Advanced'))
+    ], default='BEG')
+
+    # Override the groups field
+    groups = models.ManyToManyField(
+        Group,
+        verbose_name=_('groups'),
+        blank=True,
+        help_text=_(
+            'The groups this user belongs to. A user will get all permissions '
+            'granted to each of their groups.'
+        ),
+        related_name="custom_user_set",
+        related_query_name="custom_user",
+    )
+
+    # Override the user_permissions field
+    user_permissions = models.ManyToManyField(
+        Permission,
+        verbose_name=_('user permissions'),
+        blank=True,
+        help_text=_('Specific permissions for this user.'),
+        related_name="custom_user_set",
+        related_query_name="custom_user",
+    )
+
     def __str__(self):
         return self.username
 
-class Flashcard(models.Model):
-    FLASHCARD_TYPES = [
-        ('VOC', 'Vocabulary'),
-        ('GRM', 'Grammar'),
-        ('SEN', 'Sentence'),
-    ]
-
-    
-    front_content = models.TextField()
-    back_content = models.TextField()
-    flashcard_type = models.CharField(max_length=3, choices=FLASHCARD_TYPES)
-
-    class Meta:
-        abstract = True
-
-    def __str__(self):
-        return f"{self.get_flashcard_type_display()} - {self.front_content[:30]}"
+# The rest of your models remain unchanged
+class Level(models.Model):
+    _id = models.ObjectIdField()
+    name = models.CharField(max_length=3, choices=[
+        ('BEG', _('Beginner')),
+        ('INT', _('Intermediate')),
+        ('ADV', _('Advanced'))
+    ])
+    description = models.TextField()
 
 class Lesson(models.Model):
     _id = models.ObjectIdField()
+    level = models.ForeignKey(Level, on_delete=models.CASCADE, related_name='lessons')
     title = models.CharField(max_length=200)
     description = models.TextField()
-    level = models.CharField(max_length=3, choices=User.LEVEL_CHOICES)
     order = models.IntegerField()
-    flashcards = models.ArrayField(model_container=Flashcard)
 
-    def __str__(self):
-        return f"{self.get_level_display()} - {self.title}"
+class Flashcard(models.Model):
+    _id = models.ObjectIdField()
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='flashcards')
+    front_content = models.TextField()
+    back_content = models.TextField()
+    flashcard_type = models.CharField(max_length=3, choices=[
+        ('VOC', _('Vocabulary')),
+        ('GRM', _('Grammar')),
+        ('SEN', _('Sentence'))
+    ])
+    order = models.IntegerField()
 
 class UserProgress(models.Model):
     _id = models.ObjectIdField()
-    user = models.ForeignKey(User, related_name='progress', on_delete=models.CASCADE)
-    lesson = models.ForeignKey(Lesson, related_name='user_progress', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='progress')
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='user_progress')
     completed = models.BooleanField(default=False)
     score = models.FloatField(default=0.0)
     last_studied = models.DateTimeField(auto_now=True)
 
-    class Meta:
-        unique_together = ['user', 'lesson']
-
-    def __str__(self):
-        return f"{self.user.username} - {self.lesson.title} - {'Completed' if self.completed else 'In Progress'}"
-
-class QuizQuestion(models.Model):
-    question = models.TextField()
-    correct_answer = models.CharField(max_length=200)
-    option1 = models.CharField(max_length=200)
-    option2 = models.CharField(max_length=200)
-    option3 = models.CharField(max_length=200)
-
-    class Meta:
-        abstract = True
-
-    def __str__(self):
-        return self.question[:50]
-
 class Quiz(models.Model):
     _id = models.ObjectIdField()
-    lesson = models.OneToOneField(Lesson, related_name='quiz', on_delete=models.CASCADE)
+    lesson = models.OneToOneField(Lesson, on_delete=models.CASCADE, related_name='quiz')
     title = models.CharField(max_length=200)
-    questions = models.ArrayField(model_container=QuizQuestion)
-
-    def __str__(self):
-        return f"Quiz for {self.lesson.title}"
+    questions = models.JSONField()  # Storing questions as JSON
 
 class Achievement(models.Model):
     _id = models.ObjectIdField()
     name = models.CharField(max_length=100)
     description = models.TextField()
-    icon = models.ImageField(upload_to='achievements/')
-
-    def __str__(self):
-        return self.name
+    icon = models.CharField(max_length=255)  # Changed from ImageField to CharField
 
 class UserAchievement(models.Model):
     _id = models.ObjectIdField()
-    user = models.ForeignKey(User, related_name='achievements', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='achievements')
     achievement = models.ForeignKey(Achievement, on_delete=models.CASCADE)
     date_earned = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        unique_together = ['user', 'achievement']
+class ChatbotConversation(models.Model):
+    _id = models.ObjectIdField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='chatbot_conversations')
+    timestamp = models.DateTimeField(auto_now_add=True)
+    user_input = models.TextField()
+    bot_response = models.TextField()
+    intent = models.CharField(max_length=100)
+    confidence = models.FloatField()
 
-    def __str__(self):
-        return f"{self.user.username} - {self.achievement.name}"
+class TranslatedContent(models.Model):
+    _id = models.ObjectIdField()
+    content_type = models.CharField(max_length=50)  # e.g., 'lesson', 'flashcard', 'achievement'
+    content_id = models.CharField(max_length=24)  # Store the ObjectId as a string
+    language = models.CharField(max_length=2)
+    field_name = models.CharField(max_length=50)  # e.g., 'title', 'description', 'front_content'
+    translated_text = models.TextField()
+
+    class Meta:
+        unique_together = ('content_type', 'content_id', 'language', 'field_name')
+
