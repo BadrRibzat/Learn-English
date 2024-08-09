@@ -43,6 +43,7 @@ export default {
         commit('SET_QUIZZES', response.data);
       } catch (error) {
         commit('SET_ERROR', error.message);
+        console.error('Error fetching quizzes:', error);
       } finally {
         commit('SET_LOADING', false);
       }
@@ -54,6 +55,7 @@ export default {
         commit('SET_CURRENT_QUIZ', response.data);
       } catch (error) {
         commit('SET_ERROR', error.message);
+        console.error('Error fetching quiz:', error);
       } finally {
         commit('SET_LOADING', false);
       }
@@ -72,6 +74,7 @@ export default {
         return response.data;
       } catch (error) {
         commit('SET_ERROR', error.message);
+        console.error('Error submitting quiz:', error);
       } finally {
         commit('SET_LOADING', false);
       }
@@ -82,6 +85,7 @@ export default {
         commit('SET_USER_PROGRESS', response.data);
       } catch (error) {
         commit('SET_ERROR', error.message);
+        console.error('Error fetching user quiz progress:', error);
       }
     }
   },
