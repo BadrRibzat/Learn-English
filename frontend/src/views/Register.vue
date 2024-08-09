@@ -22,7 +22,6 @@
         <label for="native_language" class="block mb-2">Native Language</label>
         <select id="native_language" v-model="nativeLanguage" required class="w-full px-3 py-2 border rounded">
           <option value="KO">Korean</option>
-          <option value="EN">English</option>
           <option value="ZH">Chinese</option>
           <option value="JA">Japanese</option>
           <option value="FR">French</option>
