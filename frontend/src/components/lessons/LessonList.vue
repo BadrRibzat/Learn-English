@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
 
 export default {
@@ -57,10 +57,12 @@ export default {
       return progress.quizScore || 0
     }
 
-    store.dispatch('lessons/fetchLessons')
-    if (isAuthenticated.value) {
-      store.dispatch('lessons/fetchUserProgress')
-    }
+    onMounted(() => {
+      store.dispatch('lessons/fetchLessons')
+      if (isAuthenticated.value) {
+        store.dispatch('lessons/fetchUserProgress')
+      }
+    })
 
     return { 
       lessons, 
