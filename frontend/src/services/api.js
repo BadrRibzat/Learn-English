@@ -37,7 +37,7 @@ export default {
   
   // Lessons
   getLessons() {
-    return api.get('lessons/visitor/');
+    return api.get('lessons/'); // Changed from 'lessons/visitor/'
   },
   getLesson(id) {
     return api.get(`lessons/${id}/`);
