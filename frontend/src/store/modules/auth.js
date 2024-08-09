@@ -30,7 +30,7 @@ export default {
       try {
         const response = await api.login(credentials);
         commit('SET_TOKEN', response.data.access);
-        await dispatch('fetchUserProfile');
+        commit('SET_USER', response.data.user);
         return response;
       } catch (error) {
         console.error('Login failed:', error);
@@ -40,8 +40,8 @@ export default {
     async register({ commit, dispatch }, userData) {
       try {
         const response = await api.register(userData);
-        commit('SET_TOKEN', response.data.token);
-        await dispatch('fetchUserProfile');
+        commit('SET_TOKEN', response.data.access);
+        commit('SET_USER', response.data.user);
         return response;
       } catch (error) {
         console.error('Registration failed:', error);
@@ -59,7 +59,6 @@ export default {
       }
     },
     setLanguage({ commit, state }, language) {
-      // Update user's language preference
       return api.updateUserProfile({ ...state.user, native_language: language })
         .then(response => {
           commit('SET_USER', response.data);
@@ -67,7 +66,6 @@ export default {
     },
     updateUserLevel({ commit }, level) {
       commit('UPDATE_USER_LEVEL', level);
-      // You might want to send this update to the backend as well
     },
     logout({ commit }) {
       commit('CLEAR_AUTH');
