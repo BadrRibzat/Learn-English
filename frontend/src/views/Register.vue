@@ -15,9 +15,14 @@
         <input type="password" id="password" v-model="password" required class="w-full px-3 py-2 border rounded">
       </div>
       <div class="mb-4">
+        <label for="password2" class="block mb-2">Confirm Password</label>
+        <input type="password" id="password2" v-model="password2" required class="w-full px-3 py-2 border rounded">
+      </div>
+      <div class="mb-4">
         <label for="native_language" class="block mb-2">Native Language</label>
         <select id="native_language" v-model="nativeLanguage" required class="w-full px-3 py-2 border rounded">
           <option value="KO">Korean</option>
+          <option value="EN">English</option>
           <option value="ZH">Chinese</option>
           <option value="JA">Japanese</option>
           <option value="FR">French</option>
@@ -28,6 +33,7 @@
       </div>
       <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Register</button>
     </form>
+    <div v-if="error" class="mt-4 text-red-500">{{ error }}</div>
   </div>
 </template>
 
@@ -44,24 +50,31 @@ export default {
     const username = ref('')
     const email = ref('')
     const password = ref('')
+    const password2 = ref('')
     const nativeLanguage = ref('')
+    const error = ref('')
 
     const register = async () => {
+      if (password.value !== password2.value) {
+        error.value = "Passwords do not match"
+        return
+      }
       try {
         await store.dispatch('auth/register', {
           username: username.value,
           email: email.value,
           password: password.value,
+          password2: password2.value,
           native_language: nativeLanguage.value
         })
         router.push('/lessons')
-      } catch (error) {
-        console.error('Registration failed:', error)
-        // Add error handling (e.g., show error message to user)
+      } catch (err) {
+        console.error('Registration failed:', err)
+        error.value = err.response?.data?.error || 'Registration failed. Please try again.'
       }
     }
 
-    return { username, email, password, nativeLanguage, register }
+    return { username, email, password, password2, nativeLanguage, register, error }
   }
 }
 </script>
