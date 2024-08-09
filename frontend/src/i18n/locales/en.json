@@ -1,0 +1,50 @@
+{
+  "common": {
+    "appName": "English Learning App",
+    "home": "Home",
+    "lessons": "Lessons",
+    "flashcards": "Flashcards",
+    "quizzes": "Quizzes",
+    "profile": "Profile",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout"
+  },
+  "home": {
+    "welcome": "Welcome to English Learning App",
+    "startJourney": "Start your journey to master English today!",
+    "startLearning": "Start Learning",
+    "interactiveLessons": "Interactive Lessons",
+    "interactiveLessonsDesc": "Engage with our carefully crafted lessons designed to improve your English skills.",
+    "flashcards": "Flashcards",
+    "flashcardsDesc": "Memorize vocabulary and phrases quickly with our interactive flashcard system.",
+    "trackProgress": "Track Progress",
+    "trackProgressDesc": "Monitor your learning journey with detailed progress tracking and analytics."
+  },
+  "lessons": {
+    "title": "Lessons",
+    "startLesson": "Start Lesson"
+  },
+  "flashcards": {
+    "title": "Flashcards",
+    "flip": "Flip",
+    "next": "Next"
+  },
+  "quizzes": {
+    "title": "Quizzes",
+    "startQuiz": "Start Quiz",
+    "submit": "Submit"
+  },
+  "profile": {
+    "title": "User Profile",
+    "updateProfile": "Update Profile"
+  },
+  "auth": {
+    "username": "Username",
+    "password": "Password",
+    "email": "Email",
+    "nativeLanguage": "Native Language",
+    "loginButton": "Login",
+    "registerButton": "Register"
+  }
+}

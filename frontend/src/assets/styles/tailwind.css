@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap');
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+/* Custom styles */
+body {
+  @apply bg-gradient-to-r from-blue-100 via-blue-200 to-blue-300 text-gray-800;
+  font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Custom classes */
+.btn {
+  @apply px-4 py-2 rounded-full transition duration-300 ease-in-out font-semibold;
+}
+
+.btn-primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700;
+}
+
+.btn-secondary {
+  @apply bg-white text-blue-600 hover:bg-blue-100;
+}
+
+.nav-link {
+  @apply text-lg font-semibold hover:text-blue-800 transition duration-300;
+}
+
+.card {
+  @apply bg-white rounded-lg shadow-lg p-6;
+}
+
+/* Language learning specific classes */
+.flashcard {
+  @apply bg-white rounded-lg shadow-lg p-6 cursor-pointer transition duration-300 hover:shadow-xl;
+}
+
+.lesson-item {
+  @apply bg-white rounded-lg shadow-lg p-4 mb-4 hover:bg-blue-50 transition duration-300;
+}
+
+.quiz-question {
+  @apply bg-blue-50 rounded-lg p-4 mb-4;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .btn {
+    @apply px-3 py-1 text-sm;
+  }
+
+  .nav-link {
+    @apply text-base;
+  }
+}

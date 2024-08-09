@@ -1,0 +1,50 @@
+{
+  "common": {
+    "appName": "英语学习应用",
+    "home": "首页",
+    "lessons": "课程",
+    "flashcards": "闪卡",
+    "quizzes": "测验",
+    "profile": "个人资料",
+    "login": "登录",
+    "register": "注册",
+    "logout": "退出登录"
+  },
+  "home": {
+    "welcome": "欢迎使用英语学习应用",
+    "startJourney": "今天就开始掌握英语的旅程！",
+    "startLearning": "开始学习",
+    "interactiveLessons": "互动课程",
+    "interactiveLessonsDesc": "参与我们精心设计的课程，旨在提高您的英语技能。",
+    "flashcards": "闪卡",
+    "flashcardsDesc": "通过我们的互动闪卡系统快速记忆词汇和短语。",
+    "trackProgress": "追踪进度",
+    "trackProgressDesc": "通过详细的进度跟踪和分析监控您的学习旅程。"
+  },
+  "lessons": {
+    "title": "课程",
+    "startLesson": "开始课程"
+  },
+  "flashcards": {
+    "title": "闪卡",
+    "flip": "翻转",
+    "next": "下一个"
+  },
+  "quizzes": {
+    "title": "测验",
+    "startQuiz": "开始测验",
+    "submit": "提交"
+  },
+  "profile": {
+    "title": "用户资料",
+    "updateProfile": "更新资料"
+  },
+  "auth": {
+    "username": "用户名",
+    "password": "密码",
+    "email": "电子邮箱",
+    "nativeLanguage": "母语",
+    "loginButton": "登录",
+    "registerButton": "注册"
+  }
+}

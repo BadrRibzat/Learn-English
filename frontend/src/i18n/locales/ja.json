@@ -1,0 +1,50 @@
+{
+  "common": {
+    "appName": "英語学習アプリ",
+    "home": "ホーム",
+    "lessons": "レッスン",
+    "flashcards": "フラッシュカード",
+    "quizzes": "クイズ",
+    "profile": "プロフィール",
+    "login": "ログイン",
+    "register": "登録",
+    "logout": "ログアウト"
+  },
+  "home": {
+    "welcome": "英語学習アプリへようこそ",
+    "startJourney": "今日から英語習得の旅を始めましょう！",
+    "startLearning": "学習を始める",
+    "interactiveLessons": "インタラクティブレッスン",
+    "interactiveLessonsDesc": "英語力向上のために慎重に設計されたレッスンに参加しましょう。",
+    "flashcards": "フラッシュカード",
+    "flashcardsDesc": "インタラクティブなフラッシュカードシステムで語彙やフレーズを素早く覚えましょう。",
+    "trackProgress": "進捗状況の追跡",
+    "trackProgressDesc": "詳細な進捗追跡と分析で学習の旅を監視しましょう。"
+  },
+  "lessons": {
+    "title": "レッスン",
+    "startLesson": "レッスンを始める"
+  },
+  "flashcards": {
+    "title": "フラッシュカード",
+    "flip": "めくる",
+    "next": "次へ"
+  },
+  "quizzes": {
+    "title": "クイズ",
+    "startQuiz": "クイズを始める",
+    "submit": "送信"
+  },
+  "profile": {
+    "title": "ユーザープロフィール",
+    "updateProfile": "プロフィールを更新"
+  },
+  "auth": {
+    "username": "ユーザー名",
+    "password": "パスワード",
+    "email": "メールアドレス",
+    "nativeLanguage": "母国語",
+    "loginButton": "ログイン",
+    "registerButton": "登録"
+  }
+}

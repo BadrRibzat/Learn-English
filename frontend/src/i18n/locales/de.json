@@ -1,0 +1,50 @@
+{
+  "common": {
+    "appName": "Englisch-Lern-App",
+    "home": "Startseite",
+    "lessons": "Lektionen",
+    "flashcards": "Karteikarten",
+    "quizzes": "Quiz",
+    "profile": "Profil",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "logout": "Abmelden"
+  },
+  "home": {
+    "welcome": "Willkommen bei der Englisch-Lern-App",
+    "startJourney": "Beginnen Sie heute Ihre Reise zur Beherrschung der englischen Sprache!",
+    "startLearning": "Mit dem Lernen beginnen",
+    "interactiveLessons": "Interaktive Lektionen",
+    "interactiveLessonsDesc": "Nehmen Sie an unseren sorgfältig gestalteten Lektionen teil, um Ihre Englischkenntnisse zu verbessern.",
+    "flashcards": "Karteikarten",
+    "flashcardsDesc": "Merken Sie sich Vokabeln und Phrasen schnell mit unserem interaktiven Karteikartensystem.",
+    "trackProgress": "Fortschritt verfolgen",
+    "trackProgressDesc": "Überwachen Sie Ihre Lernreise mit detaillierter Fortschrittsverfolgung und Analysen."
+  },
+  "lessons": {
+    "title": "Lektionen",
+    "startLesson": "Lektion beginnen"
+  },
+  "flashcards": {
+    "title": "Karteikarten",
+    "flip": "Umdrehen",
+    "next": "Nächste"
+  },
+  "quizzes": {
+    "title": "Quiz",
+    "startQuiz": "Quiz starten",
+    "submit": "Absenden"
+  },
+  "profile": {
+    "title": "Benutzerprofil",
+    "updateProfile": "Profil aktualisieren"
+  },
+  "auth": {
+    "username": "Benutzername",
+    "password": "Passwort",
+    "email": "E-Mail",
+    "nativeLanguage": "Muttersprache",
+    "loginButton": "Anmelden",
+    "registerButton": "Registrieren"
+  }
+}

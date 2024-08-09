@@ -1,0 +1,50 @@
+{
+  "common": {
+    "appName": "영어 학습 앱",
+    "home": "홈",
+    "lessons": "레슨",
+    "flashcards": "플래시카드",
+    "quizzes": "퀴즈",
+    "profile": "프로필",
+    "login": "로그인",
+    "register": "회원가입",
+    "logout": "로그아웃"
+  },
+  "home": {
+    "welcome": "영어 학습 앱에 오신 것을 환영합니다",
+    "startJourney": "오늘부터 영어 마스터의 여정을 시작하세요!",
+    "startLearning": "학습 시작하기",
+    "interactiveLessons": "인터랙티브 레슨",
+    "interactiveLessonsDesc": "영어 실력 향상을 위해 신중하게 설계된 레슨에 참여하세요.",
+    "flashcards": "플래시카드",
+    "flashcardsDesc": "인터랙티브 플래시카드 시스템으로 어휘와 문구를 빠르게 암기하세요.",
+    "trackProgress": "진행 상황 추적",
+    "trackProgressDesc": "상세한 진행 상황 추적 및 분석으로 학습 여정을 모니터링하세요."
+  },
+  "lessons": {
+    "title": "레슨",
+    "startLesson": "레슨 시작하기"
+  },
+  "flashcards": {
+    "title": "플래시카드",
+    "flip": "뒤집기",
+    "next": "다음"
+  },
+  "quizzes": {
+    "title": "퀴즈",
+    "startQuiz": "퀴즈 시작하기",
+    "submit": "제출"
+  },
+  "profile": {
+    "title": "사용자 프로필",
+    "updateProfile": "프로필 업데이트"
+  },
+  "auth": {
+    "username": "사용자 이름",
+    "password": "비밀번호",
+    "email": "이메일",
+    "nativeLanguage": "모국어",
+    "loginButton": "로그인",
+    "registerButton": "회원가입"
+  }
+}

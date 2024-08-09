@@ -1,0 +1,50 @@
+{
+  "common": {
+    "appName": "Application d'apprentissage de l'anglais",
+    "home": "Accueil",
+    "lessons": "Leçons",
+    "flashcards": "Cartes mémoire",
+    "quizzes": "Quiz",
+    "profile": "Profil",
+    "login": "Connexion",
+    "register": "S'inscrire",
+    "logout": "Déconnexion"
+  },
+  "home": {
+    "welcome": "Bienvenue sur l'application d'apprentissage de l'anglais",
+    "startJourney": "Commencez votre voyage pour maîtriser l'anglais aujourd'hui !",
+    "startLearning": "Commencer à apprendre",
+    "interactiveLessons": "Leçons interactives",
+    "interactiveLessonsDesc": "Participez à nos leçons soigneusement conçues pour améliorer vos compétences en anglais.",
+    "flashcards": "Cartes mémoire",
+    "flashcardsDesc": "Mémorisez rapidement le vocabulaire et les phrases grâce à notre système interactif de cartes mémoire.",
+    "trackProgress": "Suivi des progrès",
+    "trackProgressDesc": "Suivez votre parcours d'apprentissage avec un suivi détaillé des progrès et des analyses."
+  },
+  "lessons": {
+    "title": "Leçons",
+    "startLesson": "Commencer la leçon"
+  },
+  "flashcards": {
+    "title": "Cartes mémoire",
+    "flip": "Retourner",
+    "next": "Suivant"
+  },
+  "quizzes": {
+    "title": "Quiz",
+    "startQuiz": "Commencer le quiz",
+    "submit": "Soumettre"
+  },
+  "profile": {
+    "title": "Profil utilisateur",
+    "updateProfile": "Mettre à jour le profil"
+  },
+  "auth": {
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "email": "Email",
+    "nativeLanguage": "Langue maternelle",
+    "loginButton": "Se connecter",
+    "registerButton": "S'inscrire"
+  }
+}
