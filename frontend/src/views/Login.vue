@@ -43,6 +43,7 @@
         </router-link>
       </div>
     </form>
+    <div v-if="error" class="text-red-500 text-center mt-4">{{ error }}</div>
   </div>
 </template>
 
@@ -58,18 +59,19 @@ export default {
     const router = useRouter()
     const username = ref('')
     const password = ref('')
+    const error = ref('')
 
     const login = async () => {
       try {
         await store.dispatch('auth/login', { username: username.value, password: password.value })
         router.push('/lessons')
-      } catch (error) {
-        console.error('Login failed:', error)
-        // Add error handling (e.g., show error message to user)
+      } catch (err) {
+        console.error('Login failed:', err)
+        error.value = 'Login failed. Please check your credentials and try again.'
       }
     }
 
-    return { username, password, login }
+    return { username, password, login, error }
   }
 }
 </script>
